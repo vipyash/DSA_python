@@ -1,0 +1,15 @@
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+    
+        output=max(set(nums), key=nums.count)
+        return output
+
+
+
+https://leetcode.com/problems/majority-element/
+        
+        
