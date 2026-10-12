@@ -1,0 +1,24 @@
+class Solution(object):
+    def twoSum(self, numbers, target):
+        """
+        :type numbers: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        c=[]
+        left=0
+        right=len(numbers)-1
+        while left < right:
+            sum=numbers[left]+numbers[right]
+            if sum==target:
+                c.append(left+1)
+                c.append(right+1)
+                break
+            elif sum > target:
+                right-=1
+            else:
+                left+1
+
+        return c
+https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
+
