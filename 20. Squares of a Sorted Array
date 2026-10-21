@@ -1,0 +1,11 @@
+class Solution(object):
+    def sortedSquares(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        square=sorted([i* i for i in nums])
+        return square        
+
+  https://leetcode.com/problems/squares-of-a-sorted-array/
+  try to solve two pointers
