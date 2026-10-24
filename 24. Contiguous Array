@@ -1,0 +1,36 @@
+class Solution(object):
+    def findMaxLength(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        seen_balances = {0: -1}
+
+        running_balance = 0
+        max_length = 0
+
+        for i in range(len(nums)):
+            if nums[i] == 1:
+                running_balance +=1
+            else:
+                running_balance -=1
+            
+            if running_balance in seen_balances:
+                start_index = seen_balances[running_balance]
+                current_length = i - start_index
+            
+                if current_length > max_length:
+                    max_length = current_length
+
+            else:
+                seen_balances[running_balance] = i
+                
+        return max_length
+
+
+        https://leetcode.com/problems/contiguous-array/
+
+
+
+
+https://leetcode.com/problems/contiguous-array/
