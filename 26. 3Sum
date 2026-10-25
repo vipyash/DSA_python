@@ -1,0 +1,36 @@
+nums = [-1, 0, 1, 2, -1, -4]
+
+# Step 1: Sort the array first
+nums.sort()  # nums becomes [-4, -1, -1, 0, 1, 2]
+c = []
+
+for i in range(len(nums) - 2):
+    # Skip duplicate elements for the first position to avoid duplicate triplets
+    if i > 0 and nums[i] == nums[i - 1]:
+        continue
+        
+    # Initialize two pointers for the remaining window
+    left = i + 1
+    right = len(nums) - 1
+    
+    while left < right:
+        total = nums[i] + nums[left] + nums[right]
+        
+        if total == 0:
+            c.append([nums[i], nums[left], nums[right]])
+            left += 1
+            right -= 1
+            
+            # Skip duplicate values for the left pointer
+            while left < right and nums[left] == nums[left - 1]:
+                left += 1
+            # Skip duplicate values for the right pointer
+            while left < right and nums[right] == nums[right + 1]:
+                right -= 1
+                
+        elif total < 0:
+            left += 1  # The sum is too small; move left pointer to get a larger value
+        else:
+            right -= 1  # The sum is too large; move right pointer to get a smaller value
+
+print(c)  # Output: [[-1, -1, 2], [-1, 0, 1]]
