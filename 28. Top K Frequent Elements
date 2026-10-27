@@ -1,0 +1,23 @@
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        c=[]
+        more={}
+        for i in nums:
+            if i not in more:
+                more[i]=1
+            else:
+                more[i]+=1
+            
+        sorted_elements = sorted(more, key=more.get, reverse=True)
+
+# Grab the top k elements
+        result = sorted_elements[:k]
+        return result
+#https://leetcode.com/problems/top-k-frequent-elements/
+
+hai bgh easy itka kai hard nai fakt dic use karto apn count sathi nntr sorted function use karto nntr te slice
