@@ -1,0 +1,34 @@
+class Solution(object):
+    def combinationSum(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        results = []
+        candidates.sort()
+        def backtrack(remain, start_index, current_combination):
+            if remain == 0:
+                results.append(list(current_combination))
+                return
+
+            for i in range(start_index, len(candidates)):
+                candidate = candidates[i]
+
+
+                if remain - candidate < 0:
+                    break
+
+                current_combination.append(candidate)
+
+                backtrack(remain - candidate, i, current_combination)
+
+                current_combination.pop()
+
+        backtrack(target, 0, [])
+        return results
+
+
+https://leetcode.com/problems/combination-sum/ 
+
+adhi nit ani baki 3 pn samjun ghe ekda
