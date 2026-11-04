@@ -1,0 +1,26 @@
+class Solution(object):
+    def partition(self, s):
+        """
+        :type s: str
+        :rtype: List[List[str]]
+        """
+        res =[]
+        path=[]
+
+        def is_palindrome(sub):
+            return sub== sub[::-1]
+
+        def dfs(start):
+            if start == len(s):
+                res.append(list(path))
+                return
+        
+
+            for end in range(start, len(s)):
+                sub = s[start:end+1]
+                if is_palindrome(sub):
+                    path.append(sub)
+                    dfs(end + 1)
+                    path.pop()
+        dfs(0)
+        return res
